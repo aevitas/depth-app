@@ -5,6 +5,8 @@ class Search extends React.Component {
   constructor(props) {
     super(props);
 
+    this.onSearchCompleted = props.SearchCompleted;
+
     this.state = {
       query: "Under Siege"
     };
@@ -23,7 +25,7 @@ class Search extends React.Component {
     const searchUri = "https://depth-api.blackrain.io/movies/search?query=";
     const response = await axios.get(`${searchUri}${q}`);
 
-    console.log(response.data);
+    this.onSearchCompleted(response.data);
   };
 
   render() {
