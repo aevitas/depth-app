@@ -1,6 +1,8 @@
 import React from 'react';
 import Search from './Components/Search'
 import ResultList from './Components/ResultList'
+import MovieDetail from './Components/MovieDetail'
+import axios from "axios";
 import './App.css';
 
 class App extends React.Component {
@@ -9,12 +11,24 @@ class App extends React.Component {
     super(props);
 
     this.state = {
-      searchResults: []
+      searchResults: [],
+      selectedMovie: null
     }
   }
 
   onSearchCompleted = (results) => {
-    this.setState({searchResults: results});
+    this.setState({searchResults: results, selectedMovie: null});
+  }
+
+  onMovieSelected = async (id) => {
+
+    if (!id)
+      return;
+
+    const detailUri = `https://depth-api.blackrain.io/movies/${id}`;
+    const response = await axios.get(detailUri);
+
+    this.setState({searchResults: [], selectedMovie: response.data});
   }
 
   render() {
@@ -23,7 +37,8 @@ class App extends React.Component {
       <h1>Depth</h1>
       <div>
         <Search SearchCompleted={(results) => this.onSearchCompleted(results)} />
-        <ResultList Items={this.state.searchResults} />
+        <MovieDetail Movie={this.state.selectedMovie} />
+        <ResultList Items={this.state.searchResults} SelectMovie={(id) => this.onMovieSelected(id)} />
       </div>
       </div>
     )
