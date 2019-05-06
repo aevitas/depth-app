@@ -7,7 +7,7 @@ jobs:
       - checkout
       - run:
           name: build
-          command: dotnet build src/Depth.sln
+          command: npm run build
   docker-image:
     machine: true
     steps:
