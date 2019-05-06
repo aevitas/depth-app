@@ -34,7 +34,7 @@ class Search extends React.Component {
           type="text"
           onChange={e => this.onQueryChanged(e)}
           onKeyPress= {e => {
-            if(e.key == 'Enter'){
+            if(e.key === 'Enter'){
               this.onSubmit(e);
             }
           }}
