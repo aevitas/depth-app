@@ -16,7 +16,7 @@ class MovieDetail extends React.Component {
         <img alt="Movie Poster" src={posterUri} style={{width:300}} />
         <p>{movie.overview}</p>
 
-        <iframe width="560" height="315" src={embedUri} frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+        <iframe title="Trailer" width="560" height="315" src={embedUri} frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
       </>
     );
   }

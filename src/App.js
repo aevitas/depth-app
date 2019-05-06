@@ -28,10 +28,7 @@ class App extends React.Component {
     const detailUri = `https://depth-api.blackrain.io/movies/${id}`;
     const response = await axios.get(detailUri);
 
-    const trailerUri = `https://depth-api.blackrain.io/videos/trailer?movie=${response.data.original_title}`
-    const trailerResponse = await axios.get(trailerUri);
-
-    this.setState({searchResults: [], selectedMovie: response.data, currentTrailer: trailerResponse.data});
+    this.setState({searchResults: [], selectedMovie: response.data.movie, currentTrailer: response.data.trailer});
   }
 
   render() {
