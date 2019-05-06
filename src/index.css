@@ -1,8 +1,13 @@
 @import url('https://fonts.googleapis.com/css?family=Exo+2');
+@import url('https://fonts.googleapis.com/css?family=Montserrat');
 
-h1 {
+html,
+body {
+  font-family: 'Montserrat', sans-serif;
+}
+
+h1,h2,h3,h4,h5 {
   font-family: 'Exo 2', sans-serif;
-  font-size: 32px;
 }
 
 code {
