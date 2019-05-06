@@ -28,7 +28,10 @@ class App extends React.Component {
     const detailUri = `https://depth-api.blackrain.io/movies/${id}`;
     const response = await axios.get(detailUri);
 
-    this.setState({searchResults: [], selectedMovie: response.data});
+    const trailerUri = `https://depth-api.blackrain.io/videos/trailer?movie=${response.data.original_title}`
+    const trailerResponse = await axios.get(trailerUri);
+
+    this.setState({searchResults: [], selectedMovie: response.data, currentTrailer: trailerResponse.data});
   }
 
   render() {
@@ -37,7 +40,7 @@ class App extends React.Component {
       <h1>Depth</h1>
       <div>
         <Search SearchCompleted={(results) => this.onSearchCompleted(results)} />
-        <MovieDetail Movie={this.state.selectedMovie} />
+        <MovieDetail Movie={this.state.selectedMovie} Trailer={this.state.currentTrailer} />
         <ResultList Items={this.state.searchResults} SelectMovie={(id) => this.onMovieSelected(id)} />
       </div>
       </div>
