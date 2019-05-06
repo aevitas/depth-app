@@ -13,7 +13,6 @@ class Search extends React.Component {
   }
 
   onQueryChanged = e => {
-    console.log(e.target.value);
     this.setState({ query: e.target.value });
   };
 
