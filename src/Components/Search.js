@@ -33,6 +33,11 @@ class Search extends React.Component {
         <input
           type="text"
           onChange={e => this.onQueryChanged(e)}
+          onKeyPress= {e => {
+            if(e.key == 'Enter'){
+              this.onSubmit(e);
+            }
+          }}
           placeholder="Under Siege"
         />
         <button onClick={e => this.onSubmit(e)}>Search</button>
